@@ -1,0 +1,106 @@
+{
+    "users": [
+        {
+            "email": "user1@example.com",
+            "mobile": "1234567890",
+            "name": "John",
+            "surname": "Doe",
+            "avatar": "john_avatar.jpg",
+            "chats": [
+                {
+                    "contactName": "Alice",
+                    "image": "alice.jpg",
+                    "messages": [
+                        {
+                            "sender": "John",
+                            "content": "Hey Alice, how are you?",
+                            "timestamp": "2023-05-10T10:00:00Z"
+                        },
+                        {
+                            "sender": "Alice",
+                            "content": "I'm doing great, thanks!",
+                            "timestamp": "2023-05-10T10:02:00Z"
+                        },
+                        {
+                            "sender": "Alice",
+                            "content": "How about you?",
+                            "timestamp": "2023-05-10T10:03:30Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "I'm good too!",
+                            "timestamp": "2023-05-10T10:05:15Z"
+                        }
+                    ]
+                },
+                {
+                    "contactName": "Bob",
+                    "image": "bob.jpg",
+                    "messages": [
+                        {
+                            "sender": "John",
+                            "content": "Hi Bob, did you watch the game last night?",
+                            "timestamp": "2023-05-09T20:30:00Z"
+                        },
+                        {
+                            "sender": "Bob",
+                            "content": "Yes, it was an amazing match!",
+                            "timestamp": "2023-05-09T20:32:00Z"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "email": "user2@example.com",
+            "mobile": "9876543210",
+            "name": "Jane",
+            "surname": "Smith",
+            "avatar": "jane_avatar.jpg",
+            "chats": [
+                {
+                    "contactName": "David",
+                    "image": "david.jpg",
+                    "messages": [
+                        {
+                            "sender": "David",
+                            "content": "Hi Jane, how's it going?",
+                            "timestamp": "2023-05-10T15:00:00Z"
+                        },
+                        {
+                            "sender": "Jane",
+                            "content": "I'm good, thanks! Just working on a project.",
+                            "timestamp": "2023-05-10T15:02:00Z"
+                        },
+                        {
+                            "sender": "Jane",
+                            "content": "That sounds interesting. Tell me more!",
+                            "timestamp": "2023-05-10T15:05:30Z"
+                        },
+                        {
+                            "sender": "David",
+                            "content": "Sure, I'll share the details with you.",
+                            "timestamp": "2023-05-10T15:10:00Z"
+                        }
+                    ]
+                },
+                {
+                    "contactName": "Sarah",
+                    "image": "sarah.jpg",
+                    "messages": [
+                        {
+                            "sender": "Sarah",
+                            "content": "Hey Jane, are you free this weekend?",
+                            "timestamp": "2023-05-09T18:00:00Z"
+                        },
+                        {
+                            "sender": "Jane",
+                            "content": "Yes, I don't have any plans. Why?",
+                            "timestamp": "2023-05-09T18:02:00Z"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
