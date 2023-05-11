@@ -6,11 +6,11 @@
             "mobile": "1234567890",
             "name": "John",
             "surname": "Doe",
-            "avatar": "john_avatar.jpg",
+            "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSR-dez27VzWPTKhNi5kQf-aNDxuBo1LQ1-Q&usqp=CAU",
             "chats": [
                 {
                     "contactName": "Alice",
-                    "image": "alice.jpg",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDtd0soCSRdpo8Y5klekJdABh4emG2P29jwg&usqp=CAU",
                     "messages": [
                         {
                             "sender": "John",
@@ -36,7 +36,7 @@
                 },
                 {
                     "contactName": "Bob",
-                    "image": "bob.jpg",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCY2gwsO9_bK6frH3p3s49WY8q0pwP8k2OlA&usqp=CAU",
                     "messages": [
                         {
                             "sender": "John",
