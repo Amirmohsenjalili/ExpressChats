@@ -3,7 +3,7 @@ import React from 'react';
 //component:
 import TextLinkExample from './Navbar'
 
-const ChatRoom1 = () => {
+const ChatRoom = () => {
   return (
     <div>
        <TextLinkExample />
@@ -11,4 +11,4 @@ const ChatRoom1 = () => {
   );
 };
 
-export default ChatRoom1;
+export default ChatRoom;

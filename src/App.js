@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 // Component
 import Login from './components/Login';
-import TextLinkExample from './components/Navbar'
 import Profile from './components/Profile';
-import ChatDetails from './components/ChatDetails';
-import ChatRoom1 from './components/ChatRoom1';
+import ChatList from './components/ChatList';
+
+// Redux 
+import store from './redux/store';
 
 const App = () => {
   return (
-
+    <Provider store={store}>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/ChatRoom' element={<ChatRoom1 />} />
+        <Route path='/ChatList' element={<ChatList />} />
         <Route path='/Profile' element={<Profile />} />
       </Routes>
+    </Provider>
 
       );
 };
