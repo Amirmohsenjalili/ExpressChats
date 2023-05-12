@@ -1,11 +1,12 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // Component
 import Login from './components/Login';
 import Profile from './components/Profile';
 import ChatList from './components/ChatList';
+import ChatRoom from './components/ChatRoom';
 
 // Redux 
 import store from './redux/store';
@@ -19,6 +20,8 @@ const App = () => {
         <Route path='/' element={<Login />} />
         <Route path='/ChatList' element={<ChatList />} />
         <Route path='/Profile' element={<Profile />} />
+        <Route path='/ChatRoom' element={<ChatRoom />} />
+        <Route path='/*' element={<Navigate to='/' />} />
       </Routes>
     </Provider>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap';
+import { Container, Image, Form, Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
@@ -47,7 +47,7 @@ const ProfilePage = () => {
       <TextLinkExample />
       {user && 
         <Container>
-          <div className='mt-4 d-flex justify-content-center'>
+          <div className='mt-4 mb-4 d-flex justify-content-center'>
             <div>
               {editMode ? (
                 <Form style={{ width: '30rem' }}>
@@ -92,7 +92,7 @@ const ProfilePage = () => {
                   </Button>
                 </Form>
               ) : (
-                <Card style={{ width: '22rem' }}>
+                <Card style={{ width: '22rem'}} className='mb-5'>
                 <Card.Img variant="top" src={user.avatar} />
                 <Card.Body>
                   <Card.Title>{user.name} {user.surname}</Card.Title>

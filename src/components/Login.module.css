@@ -1,5 +1,5 @@
 .loginPage {
-  background-color: #f6f6f6;
+  background-color: #8b9a87;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -9,7 +9,7 @@
 
 .loginCard {
   border: 1px solid silver;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px 35px;
   border-radius: 10px;
   box-shadow: 3px 5px 5px grey;

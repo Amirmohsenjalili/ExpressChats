@@ -10,7 +10,7 @@
             "chats": [
                 {
                     "contactName": "Alice",
-                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDtd0soCSRdpo8Y5klekJdABh4emG2P29jwg&usqp=CAU",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYkoXDY3bU7DweqPS20T11LyFjcXgGiCIxtSt6Ge7Y6GKU1dzLw9PFZg6opGSmlcdVwVs&usqp=CAU",
                     "messages": [
                         {
                             "sender": "John",
@@ -36,7 +36,7 @@
                 },
                 {
                     "contactName": "Bob",
-                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCY2gwsO9_bK6frH3p3s49WY8q0pwP8k2OlA&usqp=CAU",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcEYVfRQKsKioLIIoRJ3wi7es3qKM3HsPZ7wF3BBPJ_FoYdaAVjcrzpVg-2b7fq88u2cE&usqp=CAU",
                     "messages": [
                         {
                             "sender": "John",
@@ -49,6 +49,74 @@
                             "timestamp": "2023-05-09T20:32:00Z"
                         }
                     ]
+                },
+                {
+                    "contactName": "Sam",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVRR689h-rJJsTMJbY7w4zLP30xxYflNRy6HM164ZjtcJHhgL8su7kCJgBLqdJOx_2D4&usqp=CAU",
+                    "messages": [
+                        {
+                            "sender": "Sam",
+                            "content": "Hey John, are you free this weekend?",
+                            "timestamp": "2023-05-09T18:00:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "Yes, I don't have any plans. Why?",
+                            "timestamp": "2023-05-09T18:02:00Z"
+                        }
+                    ]
+                },
+                {
+                    "contactName": "Sorena",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9QfENpBY8U6UHwoBwOqaJtX3FgRzozAOJfj2zLgHiAdVyvfjeEjkYSgBs7qUVT_ZjeaM&usqp=CAU",
+                    "messages": [
+                        {
+                            "sender": "Sorena",
+                            "content": "Hi Selena, how's it going?",
+                            "timestamp": "2022-04-12T17:00:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "I'm good, thanks! Just working on a project.",
+                            "timestamp": "2022-04-12T17:02:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "That sounds interesting. Tell me more!",
+                            "timestamp": "2022-04-12T17:05:30Z"
+                        },
+                        {
+                            "sender": "Sorena",
+                            "content": "Sure, I'll share the details with you.",
+                            "timestamp": "2022-04-12T17:10:00Z"
+                        }
+                    ]
+                },
+                {
+                    "contactName": "Jack",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM88oGZ1xcAoEmTLvWyrpb81xhFy1YWBAgYH1ufoAQsamx-m9tGfVZeTy3-MxpnZGb9Oc&usqp=CAU",
+                    "messages": [
+                        {
+                            "sender": "Jack",
+                            "content": "Hi John, what are you doing?",
+                            "timestamp": "2022-04-12T17:00:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "I'm good, thanks! Just working on a project.",
+                            "timestamp": "2022-04-12T17:02:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "That sounds interesting. Tell me more!",
+                            "timestamp": "2022-04-12T17:05:30Z"
+                        },
+                        {
+                            "sender": "Jack",
+                            "content": "Oh!I can't call you",
+                            "timestamp": "2022-04-12T17:10:00Z"
+                        }
+                    ]
                 }
             ]
         },
@@ -58,11 +126,11 @@
             "mobile": "9876543210",
             "name": "Jane",
             "surname": "Smith",
-            "avatar": "jane_avatar.jpg",
+            "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom-ZOVL9yX-wLwvfISDQHdi8aXRctcMEB1Q&usqp=CAU",
             "chats": [
                 {
                     "contactName": "David",
-                    "image": "david.jpg",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSrdB8rRgA1qgkw0ckcTrhIa0kpV2ILvbMWg&usqp=CAU",
                     "messages": [
                         {
                             "sender": "David",
@@ -88,7 +156,7 @@
                 },
                 {
                     "contactName": "Sarah",
-                    "image": "sarah.jpg",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM2cddfaDotul2O_vUNtj-f9rs_koYhfcPTg&usqp=CAU",
                     "messages": [
                         {
                             "sender": "Sarah",
@@ -97,6 +165,58 @@
                         },
                         {
                             "sender": "Jane",
+                            "content": "Yes, I don't have any plans. Why?",
+                            "timestamp": "2023-05-09T18:02:00Z"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "email": "user3@example.com",
+            "mobile": "992343210",
+            "name": "Selena",
+            "surname": "Smart",
+            "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2j_R9lEP2C0zRDSzgQruoVawTXfeK4ksOpQ&usqp=CAU",
+            "chats": [
+                {
+                    "contactName": "Sorena",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JLEiMr1j8-Ge3CqcXHS1v2LNYAAEIeki3g&usqp=CAU",
+                    "messages": [
+                        {
+                            "sender": "Sorena",
+                            "content": "Hi Selena, how's it going?",
+                            "timestamp": "2022-04-12T17:00:00Z"
+                        },
+                        {
+                            "sender": "Selena",
+                            "content": "I'm good, thanks! Just working on a project.",
+                            "timestamp": "2022-04-12T17:02:00Z"
+                        },
+                        {
+                            "sender": "Selena",
+                            "content": "That sounds interesting. Tell me more!",
+                            "timestamp": "2022-04-12T17:05:30Z"
+                        },
+                        {
+                            "sender": "Sorena",
+                            "content": "Sure, I'll share the details with you.",
+                            "timestamp": "2022-04-12T17:10:00Z"
+                        }
+                    ]
+                },
+                {
+                    "contactName": "Sam",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD4p9ANMX1KNwKBnXqoPgdwMntDMIvLjm5ksOTZlFmFYkmJ0H18M9AVnQDJjm3wmxOXOk&usqp=CAU",
+                    "messages": [
+                        {
+                            "sender": "Sam",
+                            "content": "Hey Selena, are you free this weekend?",
+                            "timestamp": "2023-05-09T18:00:00Z"
+                        },
+                        {
+                            "sender": "Selena",
                             "content": "Yes, I don't have any plans. Why?",
                             "timestamp": "2023-05-09T18:02:00Z"
                         }

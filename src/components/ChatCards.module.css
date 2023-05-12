@@ -1,0 +1,22 @@
+.container {
+    margin: 10px 10px 0px;
+    display: flex;
+    align-items: center;
+    background-color:  rgb(62, 83, 67);
+    color: #fff;
+    border-radius: 20px;
+    height: 150px;
+    
+}
+
+.cards {
+    margin: 5px;
+
+}
+
+.chatImage {
+    width: 120px;
+    border-radius: 50%;
+    margin: 20px;
+    background-color: rgb(73, 114, 83);
+}

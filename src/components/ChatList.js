@@ -1,83 +1,68 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 //component
 import TextLinkExample from './Navbar'
-import User from './shared/User';
 import ChatCard from './ChatCards';
 
-//style 
-import styles from './ChatList.module.css';
-
-
-// import Card from 'react-bootstrap/Card';
+//redux
+// import { fetchUsers } from '../redux/Users/usersAction'
 
 const ChatList = () => {
+  
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/users/1');
+        setUser(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    fetchData();
+  }, []);
+  // const dispatch = useDispatch
+  // const usersState = useSelector(state => state.usersState)
+
+  // useEffect (() => {
+  //   dispatch(fetchUsers())
+  // }, [])
+
     // const user = useSelector((state) => state.data.data);
-    
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get('http://localhost:3000/users');
-            setUser(response.data[0]);
-          } catch (error) {
-            console.error(error);
-          }
-        };
-    
-        fetchData();
-      }, []);
-      return (
+  
+  return (
         <div>
           <TextLinkExample />
+
           {user && user.chats.map((chat, index) => {
             // Check if the chat object and messages property exist
             if (chat && chat.messages && Array.isArray(chat.messages) && chat.messages.length > 0) {
               return (
-                <ChatCard
-                  key={index}
-                  contactName={chat.contactName}
-                  image={chat.image}
-                  lastMessage={chat.messages[chat.messages.length - 1].content}
-                />
+                <a href='/ChatRoom' style={{textDecoration: 'none'}}>
+                  <ChatCard
+                    key={index}
+                    contactName={chat.contactName}
+                    image={chat.image}
+                    lastMessage={chat.messages[chat.messages.length - 1].content}
+                  />
+                </a>
               );
             } else {
               return null; // Skip rendering the ChatCard if the data is missing or invalid
             }
           })}
+      {/* {
+        usersState.loading ?
+        <h2>Loading ...</h2> :
+        usersState.error ?
+        <p>Somethin went wrong</p> :
+        usersState.users.map(user => <user key={user.id} userData={user} />)
+      } */}
         </div>
       );
     };
     
     export default ChatList;
-
-
-
-
-    // function WithHeaderAndQuoteExample() {
-     
-     
-    //   return (
-    //     <Card>
-    //       <TextLinkExample />
-    //       <Card.Header>Quote</Card.Header>
-    //       <Card.Body>
-    //         <blockquote className="blockquote mb-0">
-    //           <p>
-    //             {' '}
-    //             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-    //             posuere erat a ante.{' '}
-    //           </p>
-    //           <footer className="blockquote-footer">
-    //             Someone famous in <cite title="Source Title">Source Title</cite>
-    //           </footer>
-    //         </blockquote>
-    //       </Card.Body>
-    //     </Card>
-    //   );
-    // }
-    
-    
-    // export default WithHeaderAndQuoteExample;
