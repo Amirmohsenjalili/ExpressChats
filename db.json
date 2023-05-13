@@ -9,32 +9,34 @@
             "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSR-dez27VzWPTKhNi5kQf-aNDxuBo1LQ1-Q&usqp=CAU",
             "chats": [
                 {
+                    "id": 0,
                     "contactName": "Alice",
                     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYkoXDY3bU7DweqPS20T11LyFjcXgGiCIxtSt6Ge7Y6GKU1dzLw9PFZg6opGSmlcdVwVs&usqp=CAU",
                     "messages": [
                         {
                             "sender": "John",
                             "content": "Hey Alice, how are you?",
-                            "timestamp": "2023-05-10T10:00:00Z"
+                            "timestamp": "2023-03-12T10:00:00Z"
                         },
                         {
                             "sender": "Alice",
                             "content": "I'm doing great, thanks!",
-                            "timestamp": "2023-05-10T10:02:00Z"
+                            "timestamp": "2023-03-12T10:02:00Z"
                         },
                         {
                             "sender": "Alice",
                             "content": "How about you?",
-                            "timestamp": "2023-05-10T10:03:30Z"
+                            "timestamp": "2023-03-12T10:03:30Z"
                         },
                         {
                             "sender": "John",
                             "content": "I'm good too!",
-                            "timestamp": "2023-05-10T10:05:15Z"
+                            "timestamp": "2023-05-12T10:05:15Z"
                         }
                     ]
                 },
                 {
+                    "id": 1,
                     "contactName": "Bob",
                     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcEYVfRQKsKioLIIoRJ3wi7es3qKM3HsPZ7wF3BBPJ_FoYdaAVjcrzpVg-2b7fq88u2cE&usqp=CAU",
                     "messages": [
@@ -47,74 +49,147 @@
                             "sender": "Bob",
                             "content": "Yes, it was an amazing match!",
                             "timestamp": "2023-05-09T20:32:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "where are you tonight?",
+                            "timestamp": "2023-05-09T20:34:00Z"
+                        },
+                        {
+                            "sender": "Bob",
+                            "content": "I don't have a special plan",
+                            "timestamp": "2023-05-09T20:38:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "Shall we go and watch tonight's game at the cafe together?",
+                            "timestamp": "2023-05-09T20:40:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "Shall we go and watch tonight's game at the cafe together?",
+                            "timestamp": "2023-05-09T20:40:00Z"
+                        },
+                        {
+                            "sender": "Bob",
+                            "content": "Yes, I must go shopping first",
+                            "timestamp": "2023-05-09T20:41:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "Okay, so let's go for a walk together",
+                            "timestamp": "2023-05-09T20:40:00Z"
+                        },
+                        {
+                            "sender": "Bob",
+                            "content": "ok see you then",
+                            "timestamp": "2023-05-09T20:40:00Z"
                         }
                     ]
                 },
                 {
+                    "id": 2,
                     "contactName": "Sam",
                     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVRR689h-rJJsTMJbY7w4zLP30xxYflNRy6HM164ZjtcJHhgL8su7kCJgBLqdJOx_2D4&usqp=CAU",
                     "messages": [
                         {
                             "sender": "Sam",
                             "content": "Hey John, are you free this weekend?",
-                            "timestamp": "2023-05-09T18:00:00Z"
+                            "timestamp": "2023-05-07T18:00:00Z"
                         },
                         {
                             "sender": "John",
                             "content": "Yes, I don't have any plans. Why?",
-                            "timestamp": "2023-05-09T18:02:00Z"
+                            "timestamp": "2023-05-07T18:02:00Z"
+                        },
+                        {
+                            "sender": "Sam",
+                            "content": "Is there a party with your high school friends?",
+                            "timestamp": "2023-05-07T18:04:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "Yes, of course, where is it?",
+                            "timestamp": "2023-05-07T18:05:00Z"
+                        },
+                        {
+                            "sender": "Sam",
+                            "content": "Let me know, I'll tell you, let's go together",
+                            "timestamp": "2023-05-07T18:07:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "OK, I'm waiting for your news",
+                            "timestamp": "2023-05-07T18:10:00Z"
                         }
                     ]
                 },
                 {
+                    "id": 3,
                     "contactName": "Sorena",
                     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9QfENpBY8U6UHwoBwOqaJtX3FgRzozAOJfj2zLgHiAdVyvfjeEjkYSgBs7qUVT_ZjeaM&usqp=CAU",
                     "messages": [
                         {
                             "sender": "Sorena",
-                            "content": "Hi Selena, how's it going?",
-                            "timestamp": "2022-04-12T17:00:00Z"
+                            "content": "Hi John, how's it going?",
+                            "timestamp": "2023-05-05T17:00:00Z"
                         },
                         {
                             "sender": "John",
-                            "content": "I'm good, thanks! Just working on a project.",
-                            "timestamp": "2022-04-12T17:02:00Z"
-                        },
-                        {
-                            "sender": "John",
-                            "content": "That sounds interesting. Tell me more!",
-                            "timestamp": "2022-04-12T17:05:30Z"
+                            "content": "I'm good, thanks! I'm going to football",
+                            "timestamp": "2023-05-05T17:10:00Z"
                         },
                         {
                             "sender": "Sorena",
-                            "content": "Sure, I'll share the details with you.",
-                            "timestamp": "2022-04-12T17:10:00Z"
+                            "content": "I will come to see you in the evening",
+                            "timestamp": "2023-05-05T17:11:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "ok dear see you",
+                            "timestamp": "2023-05-05T17:12:00Z"
                         }
                     ]
                 },
                 {
+                    "id": 4,
                     "contactName": "Jack",
                     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM88oGZ1xcAoEmTLvWyrpb81xhFy1YWBAgYH1ufoAQsamx-m9tGfVZeTy3-MxpnZGb9Oc&usqp=CAU",
                     "messages": [
                         {
                             "sender": "Jack",
                             "content": "Hi John, what are you doing?",
-                            "timestamp": "2022-04-12T17:00:00Z"
+                            "timestamp": "2023-05-12T17:00:00Z"
                         },
                         {
                             "sender": "John",
                             "content": "I'm good, thanks! Just working on a project.",
-                            "timestamp": "2022-04-12T17:02:00Z"
-                        },
-                        {
-                            "sender": "John",
-                            "content": "That sounds interesting. Tell me more!",
-                            "timestamp": "2022-04-12T17:05:30Z"
+                            "timestamp": "2023-05-12T17:02:00Z"
                         },
                         {
                             "sender": "Jack",
-                            "content": "Oh!I can't call you",
-                            "timestamp": "2022-04-12T17:10:00Z"
+                            "content": "That sounds interesting. Tell me more!",
+                            "timestamp": "2023-05-12T17:05:30Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "By the way, I wanted to coordinate. Come help",
+                            "timestamp": "2023-05-12T17:10:00Z"
+                        },
+                        {
+                            "sender": "Jack",
+                            "content": "What is the subject of the project?",
+                            "timestamp": "2023-05-12T17:12:00Z"
+                        },
+                        {
+                            "sender": "John",
+                            "content": "It is an architectural project that you specialize in",
+                            "timestamp": "2023-05-12T17:13:00Z"
+                        },
+                        {
+                            "sender": "Jack",
+                            "content": "Ok, I will be happy to help you",
+                            "timestamp": "2023-05-12T17:15:00Z"
                         }
                     ]
                 }

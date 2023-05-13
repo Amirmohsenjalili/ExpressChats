@@ -21,11 +21,12 @@ const fetchUsersFailure = error => {
 }
 
 export const fetchUsers = () => {
-    return (dispatch) => {
+    return async(dispatch) => {
         dispatch(fetchUsersRecquest());
-        axios.get("http://localhost:3000/users")
+        await axios.get("http://localhost:3000/users/1")
             .then(response => {
                 const users = response.data;
+                console.log("iii",users)
                 dispatch(fetchUsersSuccess(users))
             })
             .catch(error => {
@@ -34,10 +35,3 @@ export const fetchUsers = () => {
             })
     }
 }
-
-// export const SET_DATA = 'SET_DATA';
-
-// export const setData = (data) => ({
-//   type: SET_DATA,
-//   payload: data
-// });

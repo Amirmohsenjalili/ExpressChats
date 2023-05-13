@@ -20,10 +20,10 @@ const App = () => {
         <Route path='/' element={<Login />} />
         <Route path='/ChatList' element={<ChatList />} />
         <Route path='/Profile' element={<Profile />} />
-        <Route path='/ChatRoom' element={<ChatRoom />} />
+        <Route path='/ChatList/:id' element={<ChatRoom />} />
         <Route path='/*' element={<Navigate to='/' />} />
       </Routes>
-    </Provider>
+     </Provider>
 
       );
 };

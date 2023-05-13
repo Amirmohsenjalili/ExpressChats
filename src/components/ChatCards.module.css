@@ -1,5 +1,5 @@
 .container {
-    margin: 10px 10px 0px;
+    margin: 10px 10px 5px;
     display: flex;
     align-items: center;
     background-color:  rgb(62, 83, 67);
@@ -19,4 +19,8 @@
     border-radius: 50%;
     margin: 20px;
     background-color: rgb(73, 114, 83);
+}
+
+.Link {
+    text-decoration: none;
 }

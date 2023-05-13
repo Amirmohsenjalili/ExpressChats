@@ -1,51 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+ 
+//Icon
+import SendIcon from "../img/send.svg"
 
 //component
-import TextLinkExample from './Navbar';
-import ChatRoomCard from './ChatRoomCard';
+import NavbarPage from "./Navbar";
 
 //style
-import styles from './ChatRoom.module.css';
+import styles from "./ChatRoom.module.css";
 
 const ChatRoom = () => {
-
-  const [user, setUser] = useState(null);
+  const { id } = useParams();
+  const [messages, setMessages] = useState([]);
   useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get('http://localhost:3000/users');
-          setUser(response.data[0]);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-  
-      fetchData();
-    }, []);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/users/1");
+        const msg = response.data.chats[id].messages;
+        const sortedMessages = [...msg].sort(
+          (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+        );
+        setMessages(sortedMessages);
+        console.log(sortedMessages);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
-       <TextLinkExample />
-       <div className={styles.Room}>
-         {user && user.chats.map((chat, index) => {
-             // Check if the chat object and messages property exist
-             if (chat && chat.messages && Array.isArray(chat.messages) && chat.messages) {
-               return (
-                 <a href='/ChatRoom' style={{textDecoration: 'none'}}>
-                   <ChatRoomCard
-                     key={index}
-                      contactName={chat.contactName}
-                      image={chat.image}
-                      message={chat.messages.content}
-                  />
-                </a>
-              );
-            } else {
-              return null; // Skip rendering the ChatCard if the data is missing or invalid
-            }
-         })}
-       </div>
+      <div className={styles.Room}>
+      <NavbarPage />
+        <div>
+          <div className={styles.msg}>
+            {messages.map((msg, index) => (
+              <div
+              className={ msg.sender === "John" ? styles.right : styles.left }
+                key={index}
+              >
+                <div>{msg.content}</div>
+                <div>{msg.timestamp}</div>
+              </div>
+            ))}
+            <div>
+            <input placeholder="Message" className={styles.MsgPlace}/>
+            <img src={SendIcon} alt="SendIcon" className={styles.SendIcon}/>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

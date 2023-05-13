@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+// style
+import styles from './Navbar.module.css'
 
 // React-Bootstrap:
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,17 +11,18 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image'
 
+// Icon
+import Icon from '../img/logo.jpeg';
 
 
-
-function TextLinkExample() {
+function NavbarPage() {
 
   const [user, setUser] = useState(null);
   useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:3000/users');
-          setUser(response.data[0]);
+          const response = await axios.get('http://localhost:3000/users/1');
+          setUser(response.data);
         } catch (error) {
           console.error(error);
         }
@@ -27,16 +32,23 @@ function TextLinkExample() {
     }, []);
 
   return (
-    <Navbar style={{ boxShadow:'0px 5px 5px gray' ,height:'5rem' ,backgroundColor:'#94AF9F'}}>
+    <Navbar className={styles.Nv}>
       <Container>
-      <Navbar.Brand href="ChatList">ChatList</Navbar.Brand>
-      <Navbar.Brand href="/Profile">Profile</Navbar.Brand>
+      <img
+              src={Icon}
+              width="50"
+              height="50"
+              className={styles.Icon}
+              alt="Express Chat logo" 
+            />
+      <Navbar.Brand><Link to="/ChatList" className={styles.Link}>ChatList</Link></Navbar.Brand>
+      <Navbar.Brand><Link to="/Profile" className={styles.Link}>Profile</Link></Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           {user && <Navbar.Text>
-              <Image src={user.avatar} style={{ width:'50px' ,borderRadius:'50%'}} className='me-2'/>
-              Signed in as:<a href='/profile'> {user.name} {user.surname} </a>
-              <a href='/' className='ms-3 '>SIGN OUT</a>
+              <Image src={user.avatar} className={styles.Image}/>
+              Signed in as:<Link to='/profile' className={styles.Link}> {user.name} {user.surname} </Link>
+              <Link to='/' className={styles.Link}>SIGN OUT</Link>
           </Navbar.Text>}
         </Navbar.Collapse>
       </Container>
@@ -44,4 +56,4 @@ function TextLinkExample() {
   );
 }
 
-export default TextLinkExample;
+export default NavbarPage;

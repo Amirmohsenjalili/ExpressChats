@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState ,useEffect } from 'react';
 import axios from 'axios';
+// import { useSelector, useDispatch } from 'react-redux';
 
 //component
-import TextLinkExample from './Navbar'
+import NavbarPage from './Navbar'
 import ChatCard from './ChatCards';
 
 //redux
-// import { fetchUsers } from '../redux/Users/usersAction'
+// import { fetchUsers } from '../redux/Users/userActionTypes'
 
 const ChatList = () => {
+ 
   
   const [user, setUser] = useState(null);
   useEffect(() => {
@@ -24,45 +25,58 @@ const ChatList = () => {
     
     fetchData();
   }, []);
-  // const dispatch = useDispatch
-  // const usersState = useSelector(state => state.usersState)
 
-  // useEffect (() => {
-  //   dispatch(fetchUsers())
-  // }, [])
-
-    // const user = useSelector((state) => state.data.data);
   
   return (
+    
         <div>
-          <TextLinkExample />
-
+          <NavbarPage />
           {user && user.chats.map((chat, index) => {
+            
+
             // Check if the chat object and messages property exist
             if (chat && chat.messages && Array.isArray(chat.messages) && chat.messages.length > 0) {
               return (
-                <a href='/ChatRoom' style={{textDecoration: 'none'}}>
+                <div>
                   <ChatCard
                     key={index}
                     contactName={chat.contactName}
                     image={chat.image}
                     lastMessage={chat.messages[chat.messages.length - 1].content}
+                    id={chat.id}
                   />
-                </a>
+                </div>
               );
             } else {
               return null; // Skip rendering the ChatCard if the data is missing or invalid
             }
           })}
-      {/* {
-        usersState.loading ?
-        <h2>Loading ...</h2> :
-        usersState.error ?
-        <p>Somethin went wrong</p> :
-        usersState.users.map(user => <user key={user.id} userData={user} />)
-      } */}
         </div>
       );
     };
     
     export default ChatList;
+    /* {
+      usersState.loading ?
+          <h2>Loading ...</h2> :
+          usersState.error ?
+          <p>Somethin went wrong</p> :
+          usersState.users.map(user => <user key={user.id} userData={user} />)
+        } */
+          // const dispatch = useDispatch();
+          // const user = useSelector((state) => state.usersState.users);
+          // const loading = useSelector((state) => state.loading);
+          // const error = useSelector((state) => state.error);
+          
+          // useEffect(() => {
+            // Dispatch the fetchData action when the component mounts
+          //   dispatch(fetchUsers());
+          // }, []);
+          // const user = useSelector(state => state.usersState)
+
+
+
+
+
+
+

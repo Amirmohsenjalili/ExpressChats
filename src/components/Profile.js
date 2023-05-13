@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Image, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 //component
-import TextLinkExample from './Navbar';
+import NavbarPage from './Navbar';
+
+// redux
+// import { useSelector } from 'react-redux';
 
 const ProfilePage = () => {
 
+  // const test = useSelector((state) => state);
+  // console.log(test)
 
   const [editMode, setEditMode] = useState(false);
   const [user, setUser] = useState(null);
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('http://localhost:3000/users');
-            setUser(response.data[0]);
+            const response = await axios.get('http://localhost:3000/users/1');
+            setUser(response.data);
           } catch (error) {
             console.error(error);
           }
@@ -44,7 +49,7 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <TextLinkExample />
+      <NavbarPage />
       {user && 
         <Container>
           <div className='mt-4 mb-4 d-flex justify-content-center'>
