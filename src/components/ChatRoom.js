@@ -23,7 +23,6 @@ const ChatRoom = () => {
           (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
         );
         setMessages(sortedMessages);
-        console.log(sortedMessages);
       } catch (error) {
         console.error(error);
       }
