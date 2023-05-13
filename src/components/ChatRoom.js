@@ -14,22 +14,51 @@ import styles from "./ChatRoom.module.css";
 const ChatRoom = () => {
   const { id } = useParams();
   const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
+  const [user, setUser] = useState({});
+  const [sendStatus, setSendStatus] = useState(false)
+
+  const AddMsg = (e) => {
+    setMessage(e.target.value)
+  }
+
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:3000/users/1");
         const msg = response.data.chats[id].messages;
+        setUser(response.data)
         const sortedMessages = [...msg].sort(
           (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
-        );
-        setMessages(sortedMessages);
-      } catch (error) {
-        console.error(error);
+          );
+          setMessages(sortedMessages);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      
+      fetchData();
+    }, [sendStatus]);
+    
+    const SendMsg =async () => {
+      const newMsg = {
+        content: message,
+        sender: "John",
+        timestamp: new Date().toLocaleString()
       }
-    };
-
-    fetchData();
-  }, []);
+      // setMessages([...messages, newMsg])
+      const updatedUser = { ...user }
+      updatedUser.chats[id].messages.push(newMsg)
+  
+      console.log("././",updatedUser);
+      try {
+        await axios.patch("http://localhost:3000/users/1", updatedUser);
+        setSendStatus(true)
+      } catch(error) {
+        console.log(error);
+      }
+    }
 
   return (
     <div>
@@ -47,8 +76,8 @@ const ChatRoom = () => {
               </div>
             ))}
             <div>
-            <input placeholder="Message" className={styles.MsgPlace}/>
-            <img src={SendIcon} alt="SendIcon" className={styles.SendIcon}/>
+            <input placeholder="Message" className={styles.MsgPlace} onChange={AddMsg}/>
+            <img src={SendIcon} alt="SendIcon" className={styles.SendIcon} onClick={SendMsg}/>
 
             </div>
           </div>
