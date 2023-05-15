@@ -18,7 +18,6 @@ const ProfilePage = () => {
   const [editMode, setEditMode] = useState(false);
   const [user, setUser] = useState(null);
   const [sendStatus, setSendStatus] = useState(false)
-  const [updateImg, setUpdateImg] = useState()
 
   // const[chang, setChang] = useState
 
@@ -51,18 +50,7 @@ const ProfilePage = () => {
       ...prevState,
       avatar: value
     }));
-    setUpdateImg(value);
-    function getBaseUrl ()  {
-      var file = document.querySelector('input[type=file]')['files'][0];
-      var reader = new FileReader();
-      var baseString;
-      reader.onloadend = function () {
-          baseString = reader.result;
-          console.log(baseString); 
-      };
-      reader.readAsDataURL(file);
-    }
-    console.log("///");
+    console.log(avatar);
     console.log(value);
     console.log('chang');
   }
