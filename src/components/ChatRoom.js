@@ -43,15 +43,13 @@ const ChatRoom = () => {
     
     const SendMsg =async () => {
       const newMsg = {
-        content: message,
         sender: "John",
+        content: message,
         timestamp: new Date().toLocaleString()
       }
-      // setMessages([...messages, newMsg])
       const updatedUser = { ...user }
       updatedUser.chats[id].messages.push(newMsg)
   
-      console.log("././",updatedUser);
       try {
         await axios.patch("http://localhost:3000/users/1", updatedUser);
         setSendStatus(true)
@@ -68,8 +66,8 @@ const ChatRoom = () => {
           <div className={styles.msg}>
             {messages.map((msg, index) => (
               <div
+              key={index}
               className={ msg.sender === "John" ? styles.right : styles.left }
-                key={index}
               >
                 <div>{msg.content}</div>
                 <div>{msg.timestamp}</div>

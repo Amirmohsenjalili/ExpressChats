@@ -17,6 +17,11 @@ const ProfilePage = () => {
 
   const [editMode, setEditMode] = useState(false);
   const [user, setUser] = useState(null);
+  const [sendStatus, setSendStatus] = useState(false)
+  const [updateImg, setUpdateImg] = useState()
+
+  // const[chang, setChang] = useState
+
     useEffect(() => {
         const fetchData = async () => {
           try {
@@ -28,7 +33,7 @@ const ProfilePage = () => {
         };
     
         fetchData();
-      }, []);
+      }, [sendStatus]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,14 +41,43 @@ const ProfilePage = () => {
       ...prevState,
       [name]: value
     }));
+    
+    
   };
+  
+  const handleImgChange = (e) => {
+    const { avatar, value } = e.target;
+    setUser((prevState) => ({
+      ...prevState,
+      avatar: value
+    }));
+    setUpdateImg(value);
+    function getBaseUrl ()  {
+      var file = document.querySelector('input[type=file]')['files'][0];
+      var reader = new FileReader();
+      var baseString;
+      reader.onloadend = function () {
+          baseString = reader.result;
+          console.log(baseString); 
+      };
+      reader.readAsDataURL(file);
+    }
+    console.log("///");
+    console.log(value);
+    console.log('chang');
+  }
 
   const handleEdit = () => {
     setEditMode(true);
   };
 
-  const handleSave = () => {
-    // Perform save operation, e.g., send updated user data to the server
+  const handleSave = async() => {
+      try {
+      await axios.patch("http://localhost:3000/users/1", user);
+      setSendStatus(true)
+    } catch(error) {
+      console.log(error);
+    }  
     setEditMode(false);
   };
 
@@ -56,6 +90,16 @@ const ProfilePage = () => {
             <div>
               {editMode ? (
                 <Form style={{ width: '30rem' }}>
+                  <Card.Img variant="top" src={user.avatar}/>
+                  <Form.Group controlId="formName">
+                    <Form.Control
+                      type="file"
+                      name="avatar"
+                      value={''}
+                      onChange={handleImgChange}
+                      className='mt-1 mb-3'
+                    />
+                  </Form.Group>
                   <Form.Group controlId="formName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control
