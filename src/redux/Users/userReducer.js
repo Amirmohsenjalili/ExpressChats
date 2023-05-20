@@ -1,10 +1,10 @@
 const initialState = {
     loading: false,
-    users: {},
+    users: [],
     error: ""
 }
 
-const usersReduser = (state=initialState, action) => {
+const usersReducer = (state=initialState, action) => {
     switch(action.type) {
         case "FETCH_USERS_REQUEST":
             return {
@@ -19,10 +19,12 @@ const usersReduser = (state=initialState, action) => {
         case "FETCH_USERS_FAILURE":
             return {
                 loading: false,
+                users: [],
                 error: action.payload
             }   
-        default: return state    
+        default:
+             return state    
     }
 }
 
-export default usersReduser;
+export default usersReducer;

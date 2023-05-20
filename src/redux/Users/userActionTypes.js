@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const fetchUsersRecquest = () => {
+const fetchUsersRequest = () => {
     return {
         type: "FETCH_USERS_REQUEST"
     }
@@ -22,11 +22,10 @@ const fetchUsersFailure = error => {
 
 export const fetchUsers = () => {
     return async(dispatch) => {
-        dispatch(fetchUsersRecquest());
-        await axios.get("http://localhost:3000/users/1")
+        dispatch(fetchUsersRequest());
+        await axios.get("http://localhost:3000/users")
             .then(response => {
-                const users = response.data;
-                console.log("iii",users)
+                const users = response.data
                 dispatch(fetchUsersSuccess(users))
             })
             .catch(error => {

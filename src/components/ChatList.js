@@ -3,16 +3,21 @@ import axios from 'axios';
 // import { useSelector, useDispatch } from 'react-redux';
 
 //component
-import NavbarPage from './Navbar'
+import NavbarPage from './Navbar';
 import ChatCard from './ChatCards';
 
 //redux
 // import { fetchUsers } from '../redux/Users/userActionTypes'
+// import { useSelector } from 'react-redux';
 
 const ChatList = () => {
+
+  // const data = useSelector(state => state.usersState.users);
+  // const userData = data
+  // console.log(userData);
  
-  
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -8,7 +8,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import NavbarPage from './Navbar';
 
 // redux
-// import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
+// import { fetchUsers } from '../redux/Users/userActionTypes';
 
 const ProfilePage = () => {
 
@@ -17,22 +18,28 @@ const ProfilePage = () => {
 
   const [editMode, setEditMode] = useState(false);
   const [user, setUser] = useState(null);
-  const [sendStatus, setSendStatus] = useState(false)
+  const [sendStatus, setSendStatus] = useState(false);
 
+  // const dispatch = useDispatch();
+  const data = useSelector(state => state.usersState.users);
+  const userData = data
+  console.log(userData);
   // const[chang, setChang] = useState
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get('http://localhost:3000/users/1');
-            setUser(response.data);
-          } catch (error) {
-            console.error(error);
-          }
-        };
+    // useEffect(() => {
+    //   dispatch(fetchUsers())
+    //   //   const fetchData = async () => {
+    //   //     try {
+    //   //       const response = await axios.get('http://localhost:3000/users/1');
+    //   //       setUser(response.data);
+    //   //     } catch (error) {
+    //   //       console.error(error);
+    //   //     }
+    //   //   };
     
-        fetchData();
-      }, [sendStatus]);
+    //   //   fetchData();
+    //   // }, [sendStatus]);
+    // }, [sendStatus]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +57,9 @@ const ProfilePage = () => {
       ...prevState,
       avatar: value
     }));
+    
+  
+  
     console.log(avatar);
     console.log(value);
     console.log('chang');
@@ -78,7 +88,7 @@ const ProfilePage = () => {
             <div>
               {editMode ? (
                 <Form style={{ width: '30rem' }}>
-                  <Card.Img variant="top" src={user.avatar}/>
+                  <Card.Img variant="top" src={userData.avatar}/>
                   <Form.Group controlId="formName">
                     <Form.Control
                       type="file"
@@ -93,7 +103,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="text"
                       name="name"
-                      value={user.name}
+                      value={userData.name}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -102,7 +112,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="text"
                       name="surname"
-                      value={user.surname}
+                      value={userData.surname}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -111,7 +121,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="email"
                       name="email"
-                      value={user.email}
+                      value={userData.email}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -120,7 +130,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="text"
                       name="mobile"
-                      value={user.mobile}
+                      value={userData.mobile}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -130,13 +140,13 @@ const ProfilePage = () => {
                 </Form>
               ) : (
                 <Card style={{ width: '22rem'}} className='mb-5'>
-                <Card.Img variant="top" src={user.avatar} />
+                <Card.Img variant="top" src={userData.avatar} />
                 <Card.Body>
-                  <Card.Title>{user.name} {user.surname}</Card.Title>
+                  <Card.Title>{userData.name} {userData.surname}</Card.Title>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                  <ListGroup.Item>{user.email}</ListGroup.Item>
-                  <ListGroup.Item>{user.mobile}</ListGroup.Item>
+                  <ListGroup.Item>{userData.email}</ListGroup.Item>
+                  <ListGroup.Item>{userData.mobile}</ListGroup.Item>
                  <Button variant="secondary" onClick={handleEdit}>     Edit   </Button>
                 </ListGroup>
               </Card>

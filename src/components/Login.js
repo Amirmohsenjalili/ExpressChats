@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // Image
@@ -9,34 +9,37 @@ import logo from '../img/logo.jpeg'
 import styles from './Login.module.css'
 
 //redux
-// import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUsers } from '../redux/Users/userActionTypes';
 
 const Login = () => {
     const navigate = useNavigate();
     const [ email, setEmail ] = useState('')
-    // const dispatch = useDispatch();
     const [ errors, setErrors ] = useState(false)
     const [ errorMsg, setErrorMsg ] = useState("")
+    
+    const dispatch = useDispatch();
+    const data = useSelector(state => state.usersState.users);
+    const user = data
 
     const getEmail = (e) => {
         setEmail(e.target.value)
     }
-
+    
     const submitEmail = async() => {
         if (email === ""){
             setErrorMsg("Email required")
             setErrors(true)
         } else if ( !/\S+@\S+\.\S+/.test(email)) {
             setErrors(true)
-            setErrorMsg("Email is not valid")
-
+            setErrorMsg("Email is not valid") 
         } else {
-            
-            
             try {
-                const result = await axios.get("http://localhost:3000/users");
-                const myUser = result.data.find( user => user.email === email );
-                // dispatch({ type: 'SET_USER', payload: myUser });
+                // const result = await axios.get("http://localhost:3000/users");
+                dispatch(fetchUsers())
+                var myUser =await data.find( user => user.email === email );
+                dispatch({ type: 'SET_USER', payload: myUser });
+                
                 if (myUser) {
                     navigate('/ChatList');
                 }
@@ -45,8 +48,10 @@ const Login = () => {
                 console.log(error)
             }
         }
+        console.log(',,,,,',myUser);
     }
-        
+    console.log('//',user);
+    
     return (
         <div className={styles.loginPage}>
             <div className={styles.loginCard}>

@@ -6,7 +6,7 @@
       "mobile": "1234567890",
       "name": "John",
       "surname": "Doe",
-      "avatar": "https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-260nw-1714666150.jpg",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2nrx0oKNIWcjDbq5RimIXN6eHzgl2T30BMw&usqp=CAU",
       "chats": [
         {
           "id": 0,
@@ -42,6 +42,11 @@
               "content": "test1",
               "sender": "John",
               "timestamp": "5/14/2023, 3:18:46 AM"
+            },
+            {
+              "sender": "John",
+              "content": "test 2",
+              "timestamp": "5/16/2023, 5:18:28 PM"
             }
           ]
         },
