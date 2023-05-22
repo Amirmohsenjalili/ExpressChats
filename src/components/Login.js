@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import axios from 'axios';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Image
@@ -13,20 +12,25 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchUsers } from '../redux/Users/userActionTypes';
 
 const Login = () => {
+    
     const navigate = useNavigate();
     const [ email, setEmail ] = useState('')
     const [ errors, setErrors ] = useState(false)
     const [ errorMsg, setErrorMsg ] = useState("")
     
+    const input = useRef(null);
+    useEffect(() => {
+        input.current.focus()
+    }, [])
+    
     const dispatch = useDispatch();
     const data = useSelector(state => state.usersState.users);
-    const user = data
-
-    const getEmail = (e) => {
+    const getEmail = async(e) => {
         setEmail(e.target.value)
+        await dispatch(fetchUsers())
     }
     
-    const submitEmail = async() => {
+    const submitEmail = () => {
         if (email === ""){
             setErrorMsg("Email required")
             setErrors(true)
@@ -35,22 +39,19 @@ const Login = () => {
             setErrorMsg("Email is not valid") 
         } else {
             try {
-                // const result = await axios.get("http://localhost:3000/users");
-                dispatch(fetchUsers())
-                var myUser =await data.find( user => user.email === email );
-                dispatch({ type: 'SET_USER', payload: myUser });
-                
+                var myUser = data.find( user => user.email === email );
+                dispatch({
+                    type: "SET_LOGIN_USER",
+                    payload: myUser
+                })
                 if (myUser) {
                     navigate('/ChatList');
                 }
-                
             } catch (error) {
                 console.log(error)
             }
         }
-        console.log(',,,,,',myUser);
     }
-    console.log('//',user);
     
     return (
         <div className={styles.loginPage}>
@@ -58,7 +59,7 @@ const Login = () => {
                 <h2>Welcome to ExpressChat!</h2>
                 <img src={logo} alt='logo' />
                 <label> Email: 
-                <input placeholder='Please Enter Your Email' type='email' onChange={getEmail} value={email} />
+                <input placeholder='Please Enter Your Email' type='email' onChange={getEmail} value={email} ref={input} />
                 
                 
                 </label>

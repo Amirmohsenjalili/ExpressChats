@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
@@ -8,66 +8,42 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import NavbarPage from './Navbar';
 
 // redux
-import { useSelector, useDispatch  } from 'react-redux';
-// import { fetchUsers } from '../redux/Users/userActionTypes';
+import { useSelector } from 'react-redux';
 
 const ProfilePage = () => {
-
-  // const test = useSelector((state) => state);
-  // console.log(test)
 
   const [editMode, setEditMode] = useState(false);
   const [user, setUser] = useState(null);
   const [sendStatus, setSendStatus] = useState(false);
 
-  // const dispatch = useDispatch();
-  const data = useSelector(state => state.usersState.users);
+  const data = useSelector(state => state.usersState.myUser);
   const userData = data
-  console.log(userData);
-  // const[chang, setChang] = useState
 
-    // useEffect(() => {
-    //   dispatch(fetchUsers())
-    //   //   const fetchData = async () => {
-    //   //     try {
-    //   //       const response = await axios.get('http://localhost:3000/users/1');
-    //   //       setUser(response.data);
-    //   //     } catch (error) {
-    //   //       console.error(error);
-    //   //     }
-    //   //   };
-    
-    //   //   fetchData();
-    //   // }, [sendStatus]);
-    // }, [sendStatus]);
+    useEffect(() => {
+      setUser(userData)
+    }, [sendStatus]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
       [name]: value
     }));
-    
-    
-  };
+  }, [user]);
   
-  const handleImgChange = (e) => {
+  const handleImgChange = useCallback((e) => {
     const { avatar, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
       avatar: value
     }));
-    
-  
-  
+    //fix the error
     console.log(avatar);
-    console.log(value);
-    console.log('chang');
-  }
+  }, [user])
 
-  const handleEdit = () => {
+  const handleEdit = useCallback(() => {
     setEditMode(true);
-  };
+  }, [editMode]);
 
   const handleSave = async() => {
       try {
@@ -88,7 +64,7 @@ const ProfilePage = () => {
             <div>
               {editMode ? (
                 <Form style={{ width: '30rem' }}>
-                  <Card.Img variant="top" src={userData.avatar}/>
+                  <Card.Img variant="top" src={user.avatar}/>
                   <Form.Group controlId="formName">
                     <Form.Control
                       type="file"
@@ -103,7 +79,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="text"
                       name="name"
-                      value={userData.name}
+                      value={user.name}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -112,7 +88,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="text"
                       name="surname"
-                      value={userData.surname}
+                      value={user.surname}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -121,7 +97,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="email"
                       name="email"
-                      value={userData.email}
+                      value={user.email}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -130,7 +106,7 @@ const ProfilePage = () => {
                     <Form.Control
                       type="text"
                       name="mobile"
-                      value={userData.mobile}
+                      value={user.mobile}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
@@ -140,13 +116,13 @@ const ProfilePage = () => {
                 </Form>
               ) : (
                 <Card style={{ width: '22rem'}} className='mb-5'>
-                <Card.Img variant="top" src={userData.avatar} />
+                <Card.Img variant="top" src={user.avatar} />
                 <Card.Body>
-                  <Card.Title>{userData.name} {userData.surname}</Card.Title>
+                  <Card.Title>{user.name} {user.surname}</Card.Title>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                  <ListGroup.Item>{userData.email}</ListGroup.Item>
-                  <ListGroup.Item>{userData.mobile}</ListGroup.Item>
+                  <ListGroup.Item>{user.email}</ListGroup.Item>
+                  <ListGroup.Item>{user.mobile}</ListGroup.Item>
                  <Button variant="secondary" onClick={handleEdit}>     Edit   </Button>
                 </ListGroup>
               </Card>
@@ -158,4 +134,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default React.memo(ProfilePage);

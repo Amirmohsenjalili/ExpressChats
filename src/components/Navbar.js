@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // style
@@ -14,23 +13,19 @@ import Image from 'react-bootstrap/Image'
 // Icon
 import Icon from '../img/logo.jpeg';
 
+//redux
+import { useSelector } from 'react-redux';
 
 function NavbarPage() {
 
   const [user, setUser] = useState(null);
-  useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get('http://localhost:3000/users/1');
-          setUser(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      
-      fetchData();
-    }, []);
+  const data = useSelector(state => state.usersState.myUser);
 
+  useEffect(() => {
+    setUser(data)
+  }, []);
+  
+  
   return (
     <Navbar className={styles.Nv}>
       <Container>
@@ -57,3 +52,19 @@ function NavbarPage() {
 }
 
 export default NavbarPage;
+
+
+      // import axios from 'axios';
+      // useEffect(() => {
+        
+      //     const fetchData = async () => {
+      //       try {
+      //         const response = await axios.get('http://localhost:3000/users/1');
+      //         setUser(response.data);
+      //       } catch (error) {
+      //         console.error(error);
+      //       }
+      //     };
+          
+      //     fetchData();
+      //   }, []);

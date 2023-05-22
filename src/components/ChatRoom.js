@@ -11,12 +11,18 @@ import NavbarPage from "./Navbar";
 //style
 import styles from "./ChatRoom.module.css";
 
+// redux
+import { useSelector } from 'react-redux';
+
 const ChatRoom = () => {
+
+  const data = useSelector(state => state.usersState.myUser);
   const { id } = useParams();
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [user, setUser] = useState({});
   const [sendStatus, setSendStatus] = useState(false)
+  const [loginUser, setLoginUser] = useState("")
 
   const AddMsg = (e) => {
     setMessage(e.target.value)
@@ -24,34 +30,27 @@ const ChatRoom = () => {
 
   
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/users/1");
-        const msg = response.data.chats[id].messages;
-        setUser(response.data)
-        const sortedMessages = [...msg].sort(
-          (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
-          );
-          setMessages(sortedMessages);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      
-      fetchData();
+    const msg = data.chats[id].messages;
+      setUser(data)
+      setLoginUser(data.name)
+      const sortedMessages = [...msg].sort(
+        (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+       );
+      setMessages(sortedMessages);
+
     }, [sendStatus]);
     
     const SendMsg =async () => {
       const newMsg = {
-        sender: "John",
+        sender: loginUser,
         content: message,
         timestamp: new Date().toLocaleString()
       }
       const updatedUser = { ...user }
       updatedUser.chats[id].messages.push(newMsg)
-  
+      
       try {
-        await axios.patch("http://localhost:3000/users/1", updatedUser);
+        await axios.patch("http://localhost:3000/users", updatedUser);
         setSendStatus(true)
       } catch(error) {
         console.log(error);
@@ -67,7 +66,7 @@ const ChatRoom = () => {
             {messages.map((msg, index) => (
               <div
               key={index}
-              className={ msg.sender === "John" ? styles.right : styles.left }
+              className={ msg.sender === loginUser ? styles.right : styles.left }
               >
                 <div>{msg.content}</div>
                 <div>{msg.timestamp}</div>
@@ -86,3 +85,21 @@ const ChatRoom = () => {
 };
 
 export default ChatRoom;
+
+
+
+              // const fetchData = async () => {
+              //   try {
+              //     const response = await axios.get("http://localhost:3000/users/1");
+              //     const msg = response.data.chats[id].messages;
+              //     setUser(response.data)
+              //     const sortedMessages = [...msg].sort(
+              //       (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+              //       );
+              //       setMessages(sortedMessages);
+              //     } catch (error) {
+              //       console.error(error);
+              //     }
+              //   };
+                
+              //   fetchData();
