@@ -51,6 +51,7 @@ const Login = () => {
                 console.log(error)
             }
         }
+        localStorage.setItem("myUser", JSON.stringify(myUser));
     }
     
     return (

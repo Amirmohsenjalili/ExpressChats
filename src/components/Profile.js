@@ -21,6 +21,10 @@ const ProfilePage = () => {
 
     useEffect(() => {
       setUser(userData)
+      if(!user) {
+        const data = localStorage.getItem('myUser');
+        setUser(JSON.parse(data))
+      }
     }, [sendStatus]);
 
   const handleInputChange = useCallback((e) => {
@@ -51,7 +55,7 @@ const ProfilePage = () => {
       setSendStatus(true)
     } catch(error) {
       console.log(error);
-    }  
+    }
     setEditMode(false);
   };
 

@@ -1,4 +1,5 @@
 import React, { useState ,useEffect } from 'react';
+import { v4 } from 'uuid';
 
 //component
 import NavbarPage from './Navbar';
@@ -14,8 +15,12 @@ const ChatList = () => {
   
   useEffect(() => {
     setUser(data)
+    if(!user) {
+      const data = localStorage.getItem('myUser');
+      setUser(JSON.parse(data))
+    }
   }, []);
-  console.log(user);
+
   
   return (
     
@@ -27,7 +32,7 @@ const ChatList = () => {
               return (
                 <div>
                   <ChatCard
-                    key={index}
+                    key={v4()}
                     contactName={chat.contactName}
                     image={chat.image}
                     lastMessage={chat.messages[chat.messages.length - 1].content}

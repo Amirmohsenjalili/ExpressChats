@@ -18,7 +18,6 @@ const usersReducer = (state=initialState, action) => {
                 users: action.payload
             }    
             case "SET_LOGIN_USER":
-                console.log("aaaaa",action.payload);
                 return {
                 loading: false,
                 myUser: action.payload,

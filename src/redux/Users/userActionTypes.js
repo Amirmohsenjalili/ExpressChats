@@ -19,8 +19,6 @@ const setLoginUser = myUser => {
         payload: myUser
     }
 }
-//fix the error
-console.log(setLoginUser);
 
 const fetchUsersFailure = error => {
     return {
@@ -35,8 +33,8 @@ export const fetchUsers = () => {
         await axios.get("http://localhost:3000/users")
             .then(response => {
                 const users = response.data
-                console.log('actio',users);
                 dispatch(fetchUsersSuccess(users))
+                setLoginUser()
             })
             .catch(error => {
                 const errorMsg = error.message

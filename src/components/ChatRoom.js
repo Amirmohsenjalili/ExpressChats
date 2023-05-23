@@ -14,31 +14,49 @@ import styles from "./ChatRoom.module.css";
 // redux
 import { useSelector } from 'react-redux';
 
+
 const ChatRoom = () => {
 
-  const data = useSelector(state => state.usersState.myUser);
   const { id } = useParams();
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [sendStatus, setSendStatus] = useState(false)
   const [loginUser, setLoginUser] = useState("")
+  const data = useSelector(state => state.usersState.myUser);
+
+  useEffect(() => {
+    setUser(data)
+  }, [])
+  if(!user) {
+    const userData = localStorage.getItem('myUser');
+    setUser(JSON.parse(userData))
+  }
+
+  useEffect(() => {
+    if (data) {
+      const msg = user.chats[id].messages;
+      setLoginUser(user.name)
+      
+        const sortedMessages = [...msg].sort(
+          (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+          );
+          setMessages(sortedMessages);
+    } else {
+      const msg = user.chats[id].messages;
+    setLoginUser(user.name)
+    
+      const sortedMessages = [...msg].sort(
+        (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+        );
+        setMessages(sortedMessages);
+    }
+  }, [sendStatus])
+  
 
   const AddMsg = (e) => {
     setMessage(e.target.value)
   }
-
-  
-  useEffect(() => {
-    const msg = data.chats[id].messages;
-      setUser(data)
-      setLoginUser(data.name)
-      const sortedMessages = [...msg].sort(
-        (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
-       );
-      setMessages(sortedMessages);
-
-    }, [sendStatus]);
     
     const SendMsg =async () => {
       const newMsg = {

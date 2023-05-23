@@ -23,7 +23,15 @@ function NavbarPage() {
 
   useEffect(() => {
     setUser(data)
+    if(!user) {
+      const data = localStorage.getItem('myUser');
+      setUser(JSON.parse(data))
+    }
   }, []);
+
+  const SignOut = () => {
+    localStorage.clear()
+  }
   
   
   return (
@@ -43,7 +51,7 @@ function NavbarPage() {
           {user && <Navbar.Text>
               <Image src={user.avatar} className={styles.Image}/>
               Signed in as:<Link to='/profile' className={styles.Link}> {user.name} {user.surname} </Link>
-              <Link to='/' className={styles.Link}>SIGN OUT</Link>
+              <Link to='/' className={styles.Link} onClick={SignOut}>SIGN OUT</Link>
           </Navbar.Text>}
         </Navbar.Collapse>
       </Container>
